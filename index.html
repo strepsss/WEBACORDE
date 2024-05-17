@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Sequência de Acordes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Sequência de Acordes</h1>
+        <form id="chordForm">
+            <label for="chord">Acorde:</label>
+            <input type="text" id="chord" name="chord" required>
+            
+            <label for="scaleType">Tipo de Escala:</label>
+            <select id="scaleType" name="scaleType">
+                <option value="major">Maior</option>
+                <option value="minor">Menor</option>
+                <option value="diminished">Diminuta</option>
+                <option value="lydian">Lídio</option>
+                <option value="mixolydian">Mixolídio</option>
+                <option value="dorian">Dórico</option>
+                <option value="phrygian">Frígio</option>
+                <option value="locrian">Lócrio</option>
+            </select>
+            
+            <button type="submit">Gerar Sequência</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

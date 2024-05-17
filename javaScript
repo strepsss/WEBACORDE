@@ -1,0 +1,38 @@
+document.getElementById('chordForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const chord = document.getElementById('chord').value.trim();
+    const scaleType = document.getElementById('scaleType').value;
+    
+    const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    
+    const scales = {
+        major: [2, 2, 1, 2, 2, 2, 1],
+        minor: [2, 1, 2, 2, 1, 2, 2],
+        diminished: [2, 1, 2, 1, 2, 1, 2, 1],
+        lydian: [2, 2, 2, 1, 2, 2, 1],
+        mixolydian: [2, 2, 1, 2, 2, 1, 2],
+        dorian: [2, 1, 2, 2, 2, 1, 2],
+        phrygian: [1, 2, 2, 2, 1, 2, 2],
+        locrian: [1, 2, 2, 1, 2, 2, 2]
+    };
+
+    const startIndex = notes.indexOf(chord.toUpperCase());
+    if (startIndex === -1) {
+        alert('Acorde inválido!');
+        return;
+    }
+
+    let scaleNotes = [chord.toUpperCase()];
+    let currentIndex = startIndex;
+
+    scales[scaleType].forEach(interval => {
+        currentIndex = (currentIndex + interval) % notes.length;
+        scaleNotes.push(notes[currentIndex]);
+    });
+
+    document.getElementById('result').innerHTML = `
+        <h2>Sequência de Acordes</h2>
+        <p>${scaleNotes.join(' - ')}</p>
+    `;
+});
